@@ -9,7 +9,8 @@ import './MyHomeContainer.css';
 
 class MyHomeContainer extends Component {
     state = {
-        user: {}
+        user: {},
+        posts: []
     }
 
     componentDidMount() {
@@ -18,15 +19,16 @@ class MyHomeContainer extends Component {
 
     getUserInfo = () => {
         axios.get(`${API_URL}users/${this.props.currentUser}`)
-            .then(response => this.setState({ user: response.data.data }))
+            .then(response => this.setState({ user: response.data.data, posts: [response.data.data.posts] }))
             .catch(error => console.log(error.response));
     };
 
     render() {
+        console.log(this.state.posts);
         return (
             <div className="my-home">
                 <Profile user={this.state.user} />
-                <Posts />
+                <Posts posts={this.state.posts} />
                 <Restaurants />
             </div>
         );

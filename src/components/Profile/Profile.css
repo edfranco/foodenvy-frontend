@@ -10,11 +10,12 @@
 }
 
 .profile-header img{
-    height:25vh;
-    width: 14vw;
+    height:27vh;
+    width: 20vw;
     border-radius: 50%; 
 }
 
 .profile-header{
     display: flex;
+    padding:1em;
 }
