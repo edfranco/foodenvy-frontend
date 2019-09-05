@@ -19,7 +19,7 @@ class MyHomeContainer extends Component {
 
     getUserInfo = () => {
         axios.get(`${API_URL}users/${this.props.currentUser}`)
-            .then(response => this.setState({ user: response.data.data, posts: [response.data.data.posts] }))
+            .then(response => this.setState({ user: response.data.data, posts: response.data.data.posts }))
             .catch(error => console.log(error.response));
     };
 
@@ -28,7 +28,7 @@ class MyHomeContainer extends Component {
         return (
             <div className="my-home">
                 <Profile user={this.state.user} />
-                <Posts posts={this.state.posts} />
+                {this.state.posts.length && <Posts posts={this.state.posts} />}
                 <Restaurants />
             </div>
         );
