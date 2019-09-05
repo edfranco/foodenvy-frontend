@@ -5,13 +5,13 @@ import './Nav.css';
 const Nav = ({ logout, currentUser }) => {
     return (
         <nav>
-            <Link to="/">
+            <Link to={currentUser ? "/my_home" : "/"}>
                 <h1 className="nav-header">FoodEnvy</h1>
             </Link>
             <ul className="nav-links">
                 {currentUser
                     ? <>
-                        <Link to="/register">
+                        <Link to="/my_home">
                             <li>Profile</li>
                         </Link>
                         <li style={{ cursor: 'pointer' }} onClick={logout}>Logout</li>

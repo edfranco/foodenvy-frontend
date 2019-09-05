@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 // internal components
 import Nav from './components/Nav/Nav';
@@ -35,4 +36,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

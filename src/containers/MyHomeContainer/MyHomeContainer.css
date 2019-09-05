@@ -1,0 +1,19 @@
+.my-home{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+
+
+.posts{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    border: 1px solid black;
+    height:80vh;
+}
+.restaurants{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    border: 1px solid black;
+    height:80vh;
+}

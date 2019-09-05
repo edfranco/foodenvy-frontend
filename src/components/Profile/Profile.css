@@ -1,0 +1,20 @@
+.profile{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    border: 1px solid black;
+    height:80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.profile-header img{
+    height:25vh;
+    width: 14vw;
+    border-radius: 50%; 
+}
+
+.profile-header{
+    display: flex;
+}

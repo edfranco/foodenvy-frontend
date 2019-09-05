@@ -43,7 +43,7 @@ class Home extends Component {
                 </div>
 
                 {this.props.login
-                    ? <Login currentUser={this.props.currentUser} setCurrentUser={this.props.setCurrentUser} />
+                    ? <Login history={this.props.history} currentUser={this.props.currentUser} setCurrentUser={this.props.setCurrentUser} />
                     : <Register handleSubmit={this.handleSubmit} handleChange={this.handleChange} formInfo={this.state} />
                 }
             </div>
