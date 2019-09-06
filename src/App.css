@@ -6,3 +6,17 @@
 a{
   text-decoration: none;
 }
+
+button{
+  background-color: rgb(148, 148, 255);
+  width: 5rem;
+  height:3rem;
+  font-size: 0.9rem;
+  color:white;
+  border-radius:.3rem; 
+}
+
+button:hover{
+  cursor: pointer;
+  background-color: rgb(196, 196, 255);
+}

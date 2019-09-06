@@ -1,0 +1,6 @@
+.restaurants{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    height:90vh;
+    overflow: scroll;
+}

@@ -3,17 +3,24 @@
     grid-template-columns: 1fr 2fr 1fr;
 }
 
-
-
-.posts{
-    grid-column-start: 2;
-    grid-column-end: 3;
-    border: 1px solid black;
-    height:80vh;
+.profile{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    height:90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: scroll;
 }
-.restaurants{
-    grid-column-start: 3;
-    grid-column-end: 4;
-    border: 1px solid black;
-    height:80vh;
+
+.profile-header img{
+    height:20vh;
+    width: 15vw;
+    border-radius: 50%; 
+}
+
+.profile-header{
+    display: flex;
+    padding:1em;
 }

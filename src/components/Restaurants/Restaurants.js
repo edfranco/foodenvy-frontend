@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import { API_URL } from '../../constants/constants';
 
+import './Restaurants.css';
+
 class Restaurants extends Component {
     state = {
         restaurant: {}
@@ -16,17 +18,6 @@ class Restaurants extends Component {
             .then(response => this.setState({ restaurant: response.data.data }))
             .catch(error => console.log(error));
     };
-
-
-    // shouldComponentUpdate(prevProps, prevState) {
-    //     if (prevState.restaurant !== this.state.restaurant) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     };
-    // };
-
-
 
     render() {
         console.log('render')

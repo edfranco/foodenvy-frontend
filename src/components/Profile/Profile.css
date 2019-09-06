@@ -1,17 +1,17 @@
 .profile{
     grid-column-start: 1;
     grid-column-end: 2;
-    border: 1px solid black;
-    height:80vh;
+    height:90vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    overflow: scroll;
 }
 
 .profile-header img{
-    height:27vh;
-    width: 20vw;
+    height:20vh;
+    width: 15vw;
     border-radius: 50%; 
 }
 

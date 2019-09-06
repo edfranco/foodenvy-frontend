@@ -1,6 +1,10 @@
 .posts{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    height:90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    overflow: scroll;
 }
