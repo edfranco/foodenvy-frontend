@@ -8,9 +8,13 @@ const Routes = ({ currentUser, setCurrentUser }) => {
     return (
         <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/login" render={(props) => <Home {...props} login='login' setCurrentUser={setCurrentUser} currentUser={currentUser} />} />
+            <Route path="/login"
+                render={(props) => <Home {...props} login='login' setCurrentUser={setCurrentUser} currentUser={currentUser} />} />
             <Route path="/register" component={Register} />
-            <Route path="/my_home" render={(props) => <MyHomeContainer {...props} currentUser={currentUser} />} />
+            <Route path="/my_home"
+                render={(props) => <MyHomeContainer {...props} currentUser={currentUser} />} />
+            <Route path="/restaurant/:restaurant_name"
+                render={(props) => <MyHomeContainer {...props} currentUser={currentUser} restaurantName={props.match.params.restaurant_name} />} />
         </Switch>
     )
 }

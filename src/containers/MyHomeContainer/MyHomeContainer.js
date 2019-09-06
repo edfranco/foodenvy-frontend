@@ -9,27 +9,16 @@ import './MyHomeContainer.css';
 
 class MyHomeContainer extends Component {
     state = {
-        user: {},
-        posts: []
-    }
-
-    componentDidMount() {
-        this.getUserInfo();
-    };
-
-    getUserInfo = () => {
-        axios.get(`${API_URL}users/${this.props.currentUser}`)
-            .then(response => this.setState({ user: response.data.data, posts: response.data.data.posts }))
-            .catch(error => console.log(error.response));
+        posts: [],
+        restaurant: {},
     };
 
     render() {
-        console.log(this.state.posts);
         return (
             <div className="my-home">
-                <Profile user={this.state.user} />
-                {this.state.posts.length && <Posts posts={this.state.posts} />}
-                <Restaurants />
+                <Profile currentUser={this.props.currentUser} />
+                <Posts currentUser={this.props.currentUser} />
+                <Restaurants name={this.props.restaurantName} />
             </div>
         );
     };
