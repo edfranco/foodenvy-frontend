@@ -19,6 +19,14 @@ class MyHomeContainer extends Component {
         restaurant_slug: 'valla-sf',
         profileImage: '',
         posts: [],
+        homeGridStyleWithRestaurant: {
+            display: 'grid',
+            gridTemplateColumns: '25% 40% 45%',
+        },
+        defaultHomeGridStyle: {
+            display: 'grid',
+            gridTemplateColumns: '40% 60%',
+        }
     };
 
     componentDidMount() {
@@ -105,7 +113,8 @@ class MyHomeContainer extends Component {
 
     render() {
         return (
-            <div className="my-home">
+            <div className="my-home"
+                style={this.props.restaurantName ? this.state.homeGridStyleWithRestaurant : this.state.defaultHomeGridStyle}>
                 <div className="profile">
                     <div className="profile-header">
                         <img src={this.state.profileImage} alt={`${this.state.user.username}'s profile`} />
@@ -142,7 +151,7 @@ class MyHomeContainer extends Component {
                 </div>
 
                 <Posts posts={this.state.posts} currentUser={this.props.currentUser} deletePost={this.deletePost} />
-                <Restaurants name={this.props.restaurantName} />
+                {this.props.restaurantName && <Restaurants name={this.props.restaurantName} deletePost={this.deletePost} />}
             </div>
         );
     };

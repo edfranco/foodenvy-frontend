@@ -17,6 +17,7 @@ class Posts extends Component {
                     description={post.description}
                     slug={post.restaurant_slug}
                     deletePost={this.props.deletePost}
+                    user={post.user_id}
                 />
             );
         });

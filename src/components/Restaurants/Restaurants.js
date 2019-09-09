@@ -17,15 +17,6 @@ class Restaurants extends Component {
         this.setRestaurant()
     };
 
-    shouldComponentUpdate(nextProps, nextState) {
-        if (nextProps.name !== this.props.name) {
-            this.setRestaurant();
-            return true;
-        } else {
-            return false;
-        };
-    };
-
     setRestaurant = () => {
         axios.get(`${API_URL}restaurants/${this.props.name}`)
             .then(response => {
@@ -50,6 +41,7 @@ class Restaurants extends Component {
                     description={post.description}
                     slug={post.restaurant_slug}
                     deletePost={this.props.deletePost}
+                    user={post.user_id}
                 />
             );
         });
@@ -71,7 +63,7 @@ class Restaurants extends Component {
                         <p> {this.state.restaurant.location} </p>
                     </div>}
 
-                {this.state.posts && this.displayPosts()}
+                {this.state.posts.length > 0 && this.displayPosts()}
 
 
             </div>

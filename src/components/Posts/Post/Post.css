@@ -5,12 +5,25 @@
 }
 
 .post-header{
-    border-bottom: 1px solid black;
+    height:10vh;
+    border-bottom: 1px solid rgb(245, 245, 245);
     margin-bottom:0.5em;
     display: flex;
     justify-content: space-between;
     background-image: var(--main-bg-gradient);
     color:white;
+}
+
+.post-author-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-author-info img{
+    height: 8vh;
+    width: 5vw;
+    border-radius:50%; 
 }
 
 .post-header a{
@@ -23,8 +36,8 @@
 }
 
 .image-container img{
-    height: 100%;
-    width: 60%;
+    height: 50vh;
+    width: 30vw;
 }
 
 

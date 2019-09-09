@@ -1,7 +1,7 @@
-.my-home{
+/* .my-home{
     display: grid;
     grid-template-columns: 25% 40% 45%;
-}
+} */
 
 .profile{
     grid-column-start: 1;
