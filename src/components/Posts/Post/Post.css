@@ -4,8 +4,28 @@
     margin:2em 0;
 }
 
-.post-card img{
-    height: 50%;
-    width: 90%;
+.post-header{
+    border-bottom: 1px solid black;
+    margin-bottom:0.5em;
+    display: flex;
+    justify-content: space-between;
+    background-image: var(--main-bg-gradient);
+    color:white;
 }
+
+.post-header a{
+    color:white;
+}
+
+.image-container{
+    display: flex;
+    justify-content: center;
+}
+
+.image-container img{
+    height: 100%;
+    width: 60%;
+}
+
+
 

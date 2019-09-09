@@ -16,18 +16,3 @@
     grid-column-start:2;
     grid-column-end: 3; 
 }
-
-form{
-    margin:2em; 
-    background-color: whitesmoke;
-    height:50vh;
-    padding:1em;
-    display: flex;
-    flex-direction: column;
-    opacity: .8;
-    border-radius: 1em;
-}
-
-form p{
-    margin:1em;
-}

@@ -33,15 +33,15 @@ class MyHomeContainer extends Component {
     };
 
     deletePost = (id) => {
+        this.setState({ posts: this.state.posts.filter(post => post._id !== id) })
         axios.delete(`${API_URL}posts/${id}`)
-            .then(response => this.setState({ posts: this.state.posts.filter(post => post._id !== id) }))
-            .catch(error => console.log(error));
+            .then()
+            .catch();
     }
 
     getUserInfo = () => {
         axios.get(`${API_URL}users/${this.props.currentUser}`)
             .then(response => {
-                console.log(response.data.data.profile_image)
                 this.setState({
                     user: response.data.data,
                     posts: response.data.data.posts,
@@ -52,23 +52,30 @@ class MyHomeContainer extends Component {
     };
 
     changeProfilePic = () => {
-        console.log(this.state.profileImage)
         axios.put(`${API_URL}users/${this.state.user._id}`, { profile_image: this.state.profileImage })
             .then(response => console.log(response.data.data.profile_image))
             .catch(error => console.log(error));
     }
 
     submitPost = () => {
-        const postInfo = {
+        const newPost = {
             image: this.state.image,
             description: this.state.description,
             restaurant_name: this.state.restaurant_name,
             user_id: this.props.currentUser,
             restaurant_slug: this.state.restaurant_slug
-        }
-        axios.post(`${API_URL}posts`, postInfo)
-            .then(response => console.log(response))
-            .catch(error => console.log(error))
+        };
+
+        this.setState({
+            posts: [...this.state.posts, newPost],
+            shouldDisplayNewPostForm: false,
+            image: '',
+            description: '',
+            restaurantName: '',
+        })
+        axios.post(`${API_URL}posts`, newPost)
+            .then()
+            .catch();
     };
 
     handleProfileImageChange = (event) => {
@@ -108,11 +115,12 @@ class MyHomeContainer extends Component {
                         </div>
                     </div>
                     <button onClick={this.handleDisplayPicForm}>Change Profile Pic</button>
-                    {this.state.shouldDisplayNewPicForm && <form>
-                        <label>New Pic Url</label>
-                        <input onChange={this.handleProfileImageChange} />
-                        <button onClick={this.handlePicChange} >Submit</button>
-                    </form>}
+                    {this.state.shouldDisplayNewPicForm &&
+                        <form className="profile-form">
+                            <label>New Pic Url</label>
+                            <input onChange={this.handleProfileImageChange} />
+                            <button onClick={this.handlePicChange} >Submit</button>
+                        </form>}
                     <div className="bio">
                         <span>Bio:</span>
                         <p> {this.state.user.bio} </p>
@@ -120,7 +128,7 @@ class MyHomeContainer extends Component {
                     <button onClick={this.handleDisplayPostForm} >{this.state.buttonText}</button>
 
                     {this.state.shouldDisplayNewPostForm &&
-                        <form>
+                        <form className="new-post-form profile-form">
                             <h5>New Post</h5>
                             <label>Restaurant Name</label>
                             <input type="text" placeholder="Where did you go?" name="restaurant_name" value={this.state.restaurant_name} onChange={this.handleChange} />
@@ -131,11 +139,7 @@ class MyHomeContainer extends Component {
                             <button onClick={this.handleFormPost}>Post</button>
                         </form>
                     }
-
                 </div>
-
-
-
 
                 <Posts posts={this.state.posts} currentUser={this.props.currentUser} deletePost={this.deletePost} />
                 <Restaurants name={this.props.restaurantName} />

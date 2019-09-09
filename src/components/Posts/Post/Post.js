@@ -9,7 +9,10 @@ const Post = ({ deletePost, restaurantName, image, time, description, slug, id }
                 <Link to={`/restaurant/${slug}`}> <h1> {restaurantName} </h1> </Link>
                 <p style={{ cursor: 'pointer' }} onClick={() => deletePost(id)}>x</p>
             </div>
-            <img src={image} alt="post" />
+            <div className="image-container">
+                <img src={image} alt="post" />
+            </div>
+
             <p> {description}</p>
             <p>Posted at: {time}</p>
         </div>

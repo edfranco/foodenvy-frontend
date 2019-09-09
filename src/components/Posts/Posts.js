@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 // internal component
 import Post from './Post/Post';
 
-import { API_URL } from '../../constants/constants';
 import './Posts.css';
 
 class Posts extends Component {
