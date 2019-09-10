@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/foodenvy-frontend/static/css/main.0ae7cc0d.chunk.css",
+    "main.js": "/foodenvy-frontend/static/js/main.cac98e85.chunk.js",
+    "main.js.map": "/foodenvy-frontend/static/js/main.cac98e85.chunk.js.map",
+    "runtime~main.js": "/foodenvy-frontend/static/js/runtime~main.49d9aba2.js",
+    "runtime~main.js.map": "/foodenvy-frontend/static/js/runtime~main.49d9aba2.js.map",
+    "static/js/2.72b95fee.chunk.js": "/foodenvy-frontend/static/js/2.72b95fee.chunk.js",
+    "static/js/2.72b95fee.chunk.js.map": "/foodenvy-frontend/static/js/2.72b95fee.chunk.js.map",
+    "index.html": "/foodenvy-frontend/index.html",
+    "precache-manifest.b39488a219abe37bbc6ace7ce3ea06c9.js": "/foodenvy-frontend/precache-manifest.b39488a219abe37bbc6ace7ce3ea06c9.js",
+    "service-worker.js": "/foodenvy-frontend/service-worker.js",
+    "static/css/main.0ae7cc0d.chunk.css.map": "/foodenvy-frontend/static/css/main.0ae7cc0d.chunk.css.map"
+  }
+}
