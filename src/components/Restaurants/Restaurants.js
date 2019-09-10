@@ -20,7 +20,6 @@ class Restaurants extends Component {
     setRestaurant = () => {
         axios.get(`${API_URL}restaurants/${this.props.name}`)
             .then(response => {
-                console.log(response);
                 this.setState({
                     restaurant: response.data.data,
                     posts: response.data.data.posts
@@ -47,25 +46,17 @@ class Restaurants extends Component {
         });
     };
 
-
-
-
-
     render() {
         return (
             <div className="restaurant">
                 {this.state.restaurant && this.props.name &&
-
                     <div className="restaurants">
                         {this.state.restaurant.name}
-                        <img src={this.state.restaurant.image_url}
+                        <img id="restaurant-image" src={this.state.restaurant.image_url}
                             alt={`${this.state.restaurant.name} storefront`} />
                         <p> {this.state.restaurant.location} </p>
                     </div>}
-
                 {this.state.posts.length > 0 && this.displayPosts()}
-
-
             </div>
         );
     };

@@ -1,8 +1,3 @@
-/* .my-home{
-    display: grid;
-    grid-template-columns: 25% 40% 45%;
-} */
-
 .profile{
     grid-column-start: 1;
     grid-column-end: 2;
@@ -10,8 +5,10 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     overflow: scroll;
+    padding:1em 1em; 
+    margin-right: 1em;
 }
 
 .profile-header img{
@@ -34,4 +31,11 @@
     left:50%;
     opacity: 100;
     width: 30vw;
+}
+
+.bio{
+    background-color: whitesmoke;
+    height:10vh;
+    width: 20vw;
+    border: 1px solid black;
 }

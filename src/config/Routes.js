@@ -15,6 +15,7 @@ const Routes = ({ currentUser, setCurrentUser }) => {
                 render={(props) => <MyHomeContainer {...props} currentUser={currentUser} />} />
             <Route path="/restaurant/:restaurant_name"
                 render={(props) => <MyHomeContainer {...props} currentUser={currentUser} restaurantName={props.match.params.restaurant_name} />} />
+            <Route path="/profile/:user" render={(props) => <MyHomeContainer {...props} user={props.match.params.user} />} />
         </Switch>
     )
 }

@@ -16,7 +16,7 @@ class MyHomeContainer extends Component {
         description: '',
         restaurant_name: '',
         user_id: this.props.currentUser,
-        restaurant_slug: 'valla-sf',
+        restaurant_slug: '',
         profileImage: '',
         posts: [],
         homeGridStyleWithRestaurant: {
@@ -30,12 +30,49 @@ class MyHomeContainer extends Component {
     };
 
     componentDidMount() {
-        this.getUserInfo();
-        this.setPosts();
+        console.log(this.props.user);
+        if (this.state.user) {
+            console.log(true)
+            this.getUserInfo(this.props.user);
+            this.setPosts(this.props.user);
+        } else {
+            this.getUserInfo(this.props.currentUser);
+            this.setPosts(this.props.currentUser);
+        };
     };
 
-    setPosts = () => {
-        axios.get(`${API_URL}users/${this.props.currentUser}`)
+    componentWillReceiveProps(prevProps) {
+        console.log(prevProps)
+        if (prevProps.user) {
+            this.getUserInfo(prevProps.user);
+            this.setPosts(prevProps.user);
+        } else {
+            this.getUserInfo(prevProps.currentUser);
+            this.setPosts(prevProps.currentUser);
+        }
+
+
+    }
+
+    // shouldComponentUpdate() {
+    //     if (this.props.user) return true;
+    // }
+
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     if (nextProps.user !== this.props.user || this.props.currentUser) {
+    //         console.log(true)
+    //         this.forceUpdate()
+    //         // this.getUserInfo(this.props.user);
+    //         // this.setPosts(this.props.user);
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // };
+
+    setPosts = (user) => {
+        console.log(user);
+        axios.get(`${API_URL}users/${user}`)
             .then(response => this.setState({ posts: response.data.data.posts }))
             .catch(error => console.log(error));
     };
@@ -47,16 +84,18 @@ class MyHomeContainer extends Component {
             .catch();
     }
 
-    getUserInfo = () => {
-        axios.get(`${API_URL}users/${this.props.currentUser}`)
+    getUserInfo = (user) => {
+        console.log(user);
+        axios.get(`${API_URL}users/${user}`)
             .then(response => {
+                console.log(response)
                 this.setState({
                     user: response.data.data,
                     posts: response.data.data.posts,
                     profileImage: response.data.data.profile_image
                 })
             })
-            .catch(error => console.log(error.response));
+            .catch(error => console.log(error));
     };
 
     changeProfilePic = () => {
@@ -73,6 +112,8 @@ class MyHomeContainer extends Component {
             user_id: this.props.currentUser,
             restaurant_slug: this.state.restaurant_slug
         };
+
+        console.log(newPost.restaurant_slug);
 
         this.setState({
             posts: [...this.state.posts, newPost],
@@ -105,11 +146,11 @@ class MyHomeContainer extends Component {
     handlePicChange = (event) => {
         event.preventDefault();
         this.changeProfilePic();
-    }
+    };
 
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
-    }
+    };
 
     render() {
         return (
@@ -117,22 +158,25 @@ class MyHomeContainer extends Component {
                 style={this.props.restaurantName ? this.state.homeGridStyleWithRestaurant : this.state.defaultHomeGridStyle}>
                 <div className="profile">
                     <div className="profile-header">
-                        <img src={this.state.profileImage} alt={`${this.state.user.username}'s profile`} />
+                        <div className="image-container">
+                            <i style={{ cursor: 'pointer' }} onClick={this.handleDisplayPicForm} className="far fa-edit"></i>
+                            <img src={this.state.profileImage} alt={`${this.state.user.username}'s profile`} />
+                        </div>
                         <div className="user-info">
-                            <h1>@{this.state.user.username}</h1>
+                            <strong><p>@{this.state.user.username}</p></strong>
                             <p>{this.state.user.name}</p>
                         </div>
                     </div>
-                    <button onClick={this.handleDisplayPicForm}>Change Profile Pic</button>
+
                     {this.state.shouldDisplayNewPicForm &&
                         <form className="profile-form">
                             <label>New Pic Url</label>
                             <input onChange={this.handleProfileImageChange} />
                             <button onClick={this.handlePicChange} >Submit</button>
                         </form>}
-                    <div className="bio">
+                    <div >
                         <span>Bio:</span>
-                        <p> {this.state.user.bio} </p>
+                        <p className="bio"> {this.state.user.bio} </p>
                     </div>
                     <button onClick={this.handleDisplayPostForm} >{this.state.buttonText}</button>
 
@@ -145,6 +189,13 @@ class MyHomeContainer extends Component {
                             <input type="text" placeholder="yummy food" name="description" value={this.state.description} onChange={this.handleChange} />
                             <label>Image Url</label>
                             <input name="image" value={this.state.image} onChange={this.handleChange} />
+                            <select name="restaurant_slug" onChange={this.handleChange} value={this.state.restaurant_slug}>
+                                <option>
+                                    Select Restaurant
+                                </option>
+                                <option value="valla-sf">Taqueria Vallarta</option>
+                                <option value="gordatorta">La Torta Gorda</option>
+                            </select>
                             <button onClick={this.handleFormPost}>Post</button>
                         </form>
                     }

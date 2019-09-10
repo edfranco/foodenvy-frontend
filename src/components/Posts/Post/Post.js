@@ -10,7 +10,7 @@ const Post = ({ deletePost, restaurantName, image, time, description, slug, id, 
                     <div className="post-author-info">
                         <img src={user.profile_image} alt={`${user.username} profile`} />
                         <div>
-                            <h3>@{user.username}</h3>
+                            <Link to={`/profile/${user._id}`} ><h3>@{user.username}</h3></Link>
                             <Link to={`/restaurant/${slug}`}> <p> {restaurantName} </p> </Link>
                         </div>
 
@@ -23,7 +23,7 @@ const Post = ({ deletePost, restaurantName, image, time, description, slug, id, 
             </div>
 
             <p> {description}</p>
-            <p>Posted at: {time}</p>
+            <p>Posted at: {new Date(time).toLocaleDateString()}</p>
         </div>
     );
 };
