@@ -49,26 +49,8 @@ class MyHomeContainer extends Component {
         } else {
             this.getUserInfo(prevProps.currentUser);
             this.setPosts(prevProps.currentUser);
-        }
-
-
-    }
-
-    // shouldComponentUpdate() {
-    //     if (this.props.user) return true;
-    // }
-
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     if (nextProps.user !== this.props.user || this.props.currentUser) {
-    //         console.log(true)
-    //         this.forceUpdate()
-    //         // this.getUserInfo(this.props.user);
-    //         // this.setPosts(this.props.user);
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // };
+        };
+    };
 
     setPosts = (user) => {
         console.log(user);
@@ -82,7 +64,7 @@ class MyHomeContainer extends Component {
         axios.delete(`${API_URL}posts/${id}`)
             .then()
             .catch();
-    }
+    };
 
     getUserInfo = (user) => {
         console.log(user);
@@ -93,7 +75,7 @@ class MyHomeContainer extends Component {
                     user: response.data.data,
                     posts: response.data.data.posts,
                     profileImage: response.data.data.profile_image
-                })
+                });
             })
             .catch(error => console.log(error));
     };
@@ -102,7 +84,7 @@ class MyHomeContainer extends Component {
         axios.put(`${API_URL}users/${this.state.user._id}`, { profile_image: this.state.profileImage })
             .then(response => console.log(response.data.data.profile_image))
             .catch(error => console.log(error));
-    }
+    };
 
     submitPost = () => {
         const newPost = {
@@ -113,22 +95,20 @@ class MyHomeContainer extends Component {
             restaurant_slug: this.state.restaurant_slug
         };
 
-        console.log(newPost.restaurant_slug);
-
         this.setState({
             posts: [...this.state.posts, newPost],
             shouldDisplayNewPostForm: false,
             image: '',
             description: '',
             restaurantName: '',
-        })
+        });
         axios.post(`${API_URL}posts`, newPost)
             .then()
             .catch();
     };
 
     handleProfileImageChange = (event) => {
-        this.setState({ profileImage: event.target.value })
+        this.setState({ profileImage: event.target.value });
     };
 
     handleDisplayPostForm = () => {
@@ -200,7 +180,6 @@ class MyHomeContainer extends Component {
                         </form>
                     }
                 </div>
-
                 <Posts posts={this.state.posts} currentUser={this.props.currentUser} deletePost={this.deletePost} />
                 {this.props.restaurantName && <Restaurants name={this.props.restaurantName} deletePost={this.deletePost} />}
             </div>

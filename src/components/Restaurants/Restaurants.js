@@ -10,11 +10,14 @@ import './Restaurants.css';
 class Restaurants extends Component {
     state = {
         restaurant: {},
-        posts: []
+        posts: [],
+        shouldDisplayMap: false,
+        KEY: ''
     };
 
     componentDidMount() {
         this.setRestaurant()
+        this.getKey();
     };
 
     setRestaurant = () => {
@@ -27,6 +30,11 @@ class Restaurants extends Component {
             })
             .catch(error => console.log(error));
     };
+
+    getKey = () => {
+        axios.get(`${API_URL}maps`)
+            .then(response => this.setState({ KEY: response.data.key }));
+    }
 
     displayPosts = () => {
         return this.state.posts.map((post, i) => {
@@ -46,17 +54,30 @@ class Restaurants extends Component {
         });
     };
 
+    handleClick = () => {
+        this.setState({ shouldDisplayMap: !this.state.shouldDisplayMap });
+    }
+
     render() {
         return (
             <div className="restaurant">
                 {this.state.restaurant && this.props.name &&
                     <div className="restaurants">
                         {this.state.restaurant.name}
-                        <img id="restaurant-image" src={this.state.restaurant.image_url}
+                        <img className="restaurant-image" src={this.state.restaurant.image_url}
                             alt={`${this.state.restaurant.name} storefront`} />
                         <p> {this.state.restaurant.location} </p>
+                        <button onClick={this.handleClick} >Show Location</button>
                     </div>}
-                {this.state.posts.length > 0 && this.displayPosts()}
+                {!this.state.shouldDisplayMap && this.state.posts.length > 0
+                    ? this.displayPosts()
+                    : <div>
+                        <iframe
+                            className="restaurant-image"
+                            src={`https://www.google.com/maps/embed/v1/place?key=${this.state.KEY}
+                                &q=${this.state.restaurant.location}`} allowfullscreen>
+                        </iframe>
+                    </div>}
             </div>
         );
     };
