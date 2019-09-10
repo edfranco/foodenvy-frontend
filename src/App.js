@@ -4,6 +4,7 @@ import axios from 'axios';
 // internal components
 import Nav from './components/Nav/Nav';
 import Routes from './config/Routes';
+import { API_URL } from './constants/constants';
 import './App.css';
 
 class App extends Component {
@@ -18,7 +19,7 @@ class App extends Component {
 
   handleLogout = () => {
     localStorage.removeItem('uid');
-    axios.post(`http://localhost:4000/api/v1/auth/logout`, { withCredentials: true })
+    axios.post(`${API_URL}auth/logout`, { withCredentials: true })
       .then(() => {
         this.setState({ currentUser: null });
         this.props.history.push('/login');

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { API_URL } from '../../constants/constants';
 import axios from 'axios';
 
 class Login extends Component {
@@ -14,7 +15,7 @@ class Login extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const userInfo = this.state;
-        axios.post(`http://localhost:4000/api/v1/auth/login`, userInfo, { withCredentials: true })
+        axios.post(`${API_URL}auth/login`, userInfo, { withCredentials: true })
             .then(response => {
                 this.props.setCurrentUser(response.data.id);
                 this.props.history.push('/my_home');

@@ -3,6 +3,7 @@ import axios from 'axios';
 // internal components
 import Register from '../Auth/Register';
 import Login from '../Auth/Login';
+import { API_URL } from '../../constants/constants';
 import './Home.css';
 
 class Home extends Component {
@@ -15,7 +16,7 @@ class Home extends Component {
 
     registerUser = () => {
         const newUser = this.state;
-        axios.post(`http://localhost:4000/api/v1/auth/register`, newUser)
+        axios.post(`${API_URL}auth/register`, newUser)
             .then(response => {
                 this.props.history.push('/login');
             })
