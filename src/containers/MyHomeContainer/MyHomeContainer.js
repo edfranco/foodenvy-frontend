@@ -18,6 +18,7 @@ class MyHomeContainer extends Component {
         user_id: this.props.currentUser,
         restaurant_slug: '',
         profileImage: '',
+        bio: '',
         posts: [],
         homeGridStyleWithRestaurant: {
             display: 'grid',
@@ -73,6 +74,7 @@ class MyHomeContainer extends Component {
                 console.log(response)
                 this.setState({
                     user: response.data.data,
+                    bio: response.data.data.bio,
                     posts: response.data.data.posts,
                     profileImage: response.data.data.profile_image
                 });
@@ -83,6 +85,12 @@ class MyHomeContainer extends Component {
     changeProfilePic = () => {
         axios.put(`${API_URL}users/${this.state.user._id}`, { profile_image: this.state.profileImage })
             .then(response => console.log(response.data.data.profile_image))
+            .catch(error => console.log(error));
+    };
+
+    changeBio = () => {
+        axios.put(`${API_URL}users/${this.state.user._id}`, { bio: this.state.bio })
+            .then(response => console.log(response.data.data.bio))
             .catch(error => console.log(error));
     };
 
@@ -128,6 +136,11 @@ class MyHomeContainer extends Component {
         this.changeProfilePic();
     };
 
+    handleBioChange = (event) => {
+        event.preventDefault();
+        this.changeBio();
+    }
+
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
     };
@@ -149,14 +162,20 @@ class MyHomeContainer extends Component {
                     </div>
 
                     {this.state.shouldDisplayNewPicForm &&
-                        <form className="profile-form">
+                        <div className="new-pic">
                             <label>New Pic Url</label>
                             <input onChange={this.handleProfileImageChange} />
                             <button onClick={this.handlePicChange} >Submit</button>
-                        </form>}
+                        </div>
+                    }
                     <div >
-                        <span>Bio:</span>
-                        <p className="bio"> {this.state.user.bio} </p>
+                        <strong>Bio:</strong>
+                        {this.state.shouldDisplayNewPicForm
+                            ? <div>
+                                <input name="bio" onChange={this.handleChange} />
+                                <button>Submit</button>
+                            </div>
+                            : <p className="bio"> {this.state.bio} </p>}
                     </div>
                     <button onClick={this.handleDisplayPostForm} >{this.state.buttonText}</button>
 

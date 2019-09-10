@@ -28,9 +28,10 @@
     padding-top:5em;
     position: absolute;
     top:0;
-    left:50%;
+    left:25%;
     opacity: 100;
-    width: 30vw;
+    width: 50vw;
+    height:70vh;
 }
 
 .bio{
@@ -38,4 +39,9 @@
     height:10vh;
     width: 20vw;
     border: 1px solid black;
+}
+
+.new-pic{
+    display: flex;
+    flex-direction: column;
 }

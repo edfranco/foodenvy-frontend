@@ -73,7 +73,7 @@ class Restaurants extends Component {
                     ? this.displayPosts()
                     : <div>
                         <iframe
-                            className="restaurant-image"
+                            className="map"
                             src={`https://www.google.com/maps/embed/v1/place?key=${this.state.KEY}
                                 &q=${this.state.restaurant.location}`} allowfullscreen>
                         </iframe>

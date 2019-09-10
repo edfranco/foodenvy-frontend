@@ -29,13 +29,20 @@ button:hover{
 
 form{
     margin:2em; 
-    background-color: rgb(255, 138, 103);
+    background-color: var(--hover-button-color);
     height:50vh;
+    width: 20vw;
     padding:1em;
     display: flex;
     flex-direction: column;
     opacity: .8;
-    border-radius: 1em;
+    border-radius: .2em;
+    opacity: .8;
+}
+
+input{
+  padding: 0.3em;
+  font-size: 1.25em;
 }
 
 form button{

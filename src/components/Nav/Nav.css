@@ -4,7 +4,7 @@ nav{
     justify-content: space-between;
     align-items: flex-end;
     background-image: var(--main-bg-gradient);
-    margin-bottom: 1em;
+    padding-bottom: 1em;
 }
 
 .nav-header{

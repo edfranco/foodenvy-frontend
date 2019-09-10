@@ -1,6 +1,8 @@
 .home{
     display: grid;
     grid-template-columns: 3fr 1fr;
+    background-color: white;
+    height: 90vh;
 }
 
 .home-image{
