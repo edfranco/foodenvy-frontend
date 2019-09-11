@@ -47,3 +47,9 @@ and change the value to
 export const API_URL = `https://yourServer/api/v1/`
 ```
 - unfortunately there is no seed file (yet) so you'd have to make your own models through your mongod server
+
+### Database Specifics
+There are three models:
+- User: The user has a name, a username, and they create posts. A user has a one-to-many relationship with posts.
+- Post: A post gets created by the user and belongs to a user and a restaurant. Posts share a many-to-one relationship to users and restaurants.
+- Restaurant: A restaurant can only be created through the server so far and shares a one-to-many relationship with posts
