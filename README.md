@@ -8,12 +8,16 @@ This was app was built as a social media site that allows users to post a pictur
 
 Restaurants also have a profile to show what posts were made about their restaurant and users have a profile to show what food they want to show case. Additionally restaurants have a map to show where the restaurant is located.
 
+-----------------------------------------------------------------
+
 ### Technologies
 #### MERN
 - Mongoose
 - Express
 - React
 - Node
+
+-----------------------------------------------------------------
 
 ### Installation
 If you'd like to clone this repo and make it your own do these following steps
@@ -49,11 +53,15 @@ export const API_URL = `https://yourServer/api/v1/`
 ```
 - Unfortunately there is no seed file (yet) so you'd have to make your own models through your mongod server
 
+-----------------------------------------------------------------
+
 ### Database Specifics
 There are three models:
 - User: The user has a name, a username, and they create posts. A user has a one-to-many relationship with posts.
 - Post: A post gets created by the user and belongs to a user and a restaurant. Posts share a many-to-one relationship to users and restaurants.
 - Restaurant: A restaurant can only be created through the server so far and shares a one-to-many relationship with posts
+
+-----------------------------------------------------------------
 
 ### Glaring Bugs
 - On first render the axios call retrives no data. Clicking on a link to the home through the logo or the profile fixes it.
