@@ -37,4 +37,13 @@ npm i
 ```
 API_KEY=[your_api_key_here]
 ```
+
+- for your front-end api calls you'll want to go to
+```
+your_project_name/src/constants
+```
+and change the value to 
+```
+export const API_URL = `yourServer/api/v1/`
+```
 - unfortunately there is no seed file (yet) so you'd have to make your own models through your mongod server
