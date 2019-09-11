@@ -23,7 +23,7 @@ git clone https://github.com/edfranco/foodenvy-frontend your-name-here
 ```
 npm i
 ```
-- clone the [server] (https://github.com/edfranco/foodenvy-backend)
+- clone the [server](https://github.com/edfranco/foodenvy-backend)
 ```
 git clone https://github.com/edfranco/foodenvy-backend your-name-here
 ```
