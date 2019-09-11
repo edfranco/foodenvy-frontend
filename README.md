@@ -22,32 +22,32 @@ If you'd like to clone this repo and make it your own do these following steps
 ```
 git clone https://github.com/edfranco/foodenvy-frontend your-name-here
 ```
-- npm i
+- Install package dependencies with NPM Install
 ```
 npm i
 ```
-- clone the [server](https://github.com/edfranco/foodenvy-backend)
+- Clone the [server](https://github.com/edfranco/foodenvy-backend)
 ```
 git clone https://github.com/edfranco/foodenvy-backend your-name-here
 ```
-- npm i the server
+- Install package dependencies with NPM Install
 ```
 npm i
 ```
-- for the google maps to work you'll need your own api key (nice try) and you'll need to create a .env with the code as so
+- For the google maps to work you'll need your own api key (nice try) and you'll need to create a .env with the code as so
 ```
 API_KEY=[your_api_key_here]
 ```
 
-- for your front-end api calls you'll want to go to
+- For your front-end api calls you'll want to go to
 ```
 your_project_name/src/constants
 ```
-and change the value to 
+And change the value to 
 ```javascript
 export const API_URL = `https://yourServer/api/v1/`
 ```
-- unfortunately there is no seed file (yet) so you'd have to make your own models through your mongod server
+- Unfortunately there is no seed file (yet) so you'd have to make your own models through your mongod server
 
 ### Database Specifics
 There are three models:
