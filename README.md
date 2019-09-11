@@ -53,3 +53,9 @@ There are three models:
 - User: The user has a name, a username, and they create posts. A user has a one-to-many relationship with posts.
 - Post: A post gets created by the user and belongs to a user and a restaurant. Posts share a many-to-one relationship to users and restaurants.
 - Restaurant: A restaurant can only be created through the server so far and shares a one-to-many relationship with posts
+
+### Glaring Bugs
+- On first render the axios call retrives no data. Clicking on a link to the home through the logo or the profile fixes it.
+- Trying to traverse from restaurant to restaurant does not work. You have to go from restaurant to profile then to a different restaurant.
+- You can't look at different restaurants from another users profile. It'll rerender the current users profile.
+- Cannot update bio through the front-end as the put request does not work
