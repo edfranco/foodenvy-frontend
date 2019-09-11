@@ -24,7 +24,6 @@ class Profile extends Component {
     getUserInfo = () => {
         axios.get(`${API_URL}users/${this.props.currentUser}`)
             .then(response => {
-                console.log(response.data.data.profile_image)
                 this.setState({
                     user: response.data.data,
                     posts: response.data.data.posts,
@@ -37,7 +36,7 @@ class Profile extends Component {
     changeProfilePic = () => {
         console.log(this.state.profileImage)
         axios.put(`${API_URL}users/${this.state.user._id}`, { profile_image: this.state.profileImage })
-            .then(response => console.log(response.data.data.profile_image))
+            .then()
             .catch(error => console.log(error));
     }
 
@@ -50,7 +49,7 @@ class Profile extends Component {
             restaurant_slug: this.state.restaurant_slug
         }
         axios.post(`${API_URL}posts`, postInfo)
-            .then(response => console.log(response))
+            .then()
             .catch(error => console.log(error))
     };
 

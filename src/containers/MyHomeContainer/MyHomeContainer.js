@@ -31,7 +31,6 @@ class MyHomeContainer extends Component {
     };
 
     componentDidMount() {
-        console.log(this.props.user);
         if (this.state.user) {
             console.log(true)
             this.getUserInfo(this.props.user);
@@ -43,7 +42,6 @@ class MyHomeContainer extends Component {
     };
 
     componentWillReceiveProps(prevProps) {
-        console.log(prevProps)
         if (prevProps.user) {
             this.getUserInfo(prevProps.user);
             this.setPosts(prevProps.user);
@@ -54,7 +52,6 @@ class MyHomeContainer extends Component {
     };
 
     setPosts = (user) => {
-        console.log(user);
         axios.get(`${API_URL}users/${user}`)
             .then(response => this.setState({ posts: response.data.data.posts }))
             .catch(error => console.log(error));
@@ -68,7 +65,6 @@ class MyHomeContainer extends Component {
     };
 
     getUserInfo = (user) => {
-        console.log(user);
         axios.get(`${API_URL}users/${user}`)
             .then(response => {
                 console.log(response)
