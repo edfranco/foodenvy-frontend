@@ -16,6 +16,9 @@ Restaurants also have a profile to show what posts were made about their website
 If you'd like to clone this repo and make it your own do these following steps
 
 - Clone this repo in your preferred project directory
+```
+git clone https://github.com/edfranco/foodenvy-frontend your-name-here
+```
 - npm i
 - clone the [server] (https://github.com/edfranco/foodenvy-backend)
 - npm i the server
