@@ -11,3 +11,12 @@ Restaurants also have a profile to show what posts were made about their website
 - Node
 - Express
 -Mongoose
+
+### Installation
+If you'd like to clone this repo and make it your own do these following steps
+
+- Clone this repo in your preferred project directory
+- npm i
+- clone the [server] (https://github.com/edfranco/foodenvy-backend)
+- npm i the server
+- unfortunately there is no seed file (yet) so you'd have to make your own models through your mongod server
