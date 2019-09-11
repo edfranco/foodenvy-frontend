@@ -9,10 +9,11 @@ This was app was built as a social media site that allows users to post a pictur
 Restaurants also have a profile to show what posts were made about their restaurant and users have a profile to show what food they want to show case. Additionally restaurants have a map to show where the restaurant is located.
 
 ### Technologies
+#### MERN
+- Mongoose
+- Express
 - React
 - Node
-- Express
--Mongoose
 
 ### Installation
 If you'd like to clone this repo and make it your own do these following steps
