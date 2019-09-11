@@ -43,7 +43,7 @@ API_KEY=[your_api_key_here]
 your_project_name/src/constants
 ```
 and change the value to 
-```
+```javascript
 export const API_URL = `yourServer/api/v1/`
 ```
 - unfortunately there is no seed file (yet) so you'd have to make your own models through your mongod server
