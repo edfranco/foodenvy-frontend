@@ -17,6 +17,9 @@ Restaurants also have a profile to show what posts were made about their restaur
 - React
 - Node
 
+### External API
+- Google Maps API
+
 -----------------------------------------------------------------
 
 ### Installation
