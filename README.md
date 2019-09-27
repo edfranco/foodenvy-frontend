@@ -1,68 +1,73 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project can be deployed here [FoodEnvy](https://edfranco.github.io/foodenvy-frontend/).
+The server repo can be found here [food-envy backend](https://github.com/edfranco/foodenvy-backend).
 
-## Available Scripts
+## FoodEnvy
+![Screen Shot 2019-09-11 at 9 00 51 AM](https://user-images.githubusercontent.com/11623323/64714043-c9e37c80-d472-11e9-9578-45a5a48c8506.png)
 
-In the project directory, you can run:
+This was app was built as a social media site that allows users to post a picture of a dish they had, a description, and what restaurant they ate at. 
 
-### `npm start`
+Restaurants also have a profile to show what posts were made about their restaurant and users have a profile to show what food they want to show case. Additionally restaurants have a map to show where the restaurant is located.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-----------------------------------------------------------------
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Technologies
+#### MERN
+- Mongoose
+- Express
+- React
+- Node
 
-### `npm test`
+### External API
+- Google Maps API
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-----------------------------------------------------------------
 
-### `npm run build`
+### Installation
+If you'd like to clone this repo and make it your own do these following steps
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Clone this repo in your preferred project directory
+```
+git clone https://github.com/edfranco/foodenvy-frontend your-name-here
+```
+- Install package dependencies with NPM Install
+```
+npm i
+```
+- Clone the [server](https://github.com/edfranco/foodenvy-backend)
+```
+git clone https://github.com/edfranco/foodenvy-backend your-name-here
+```
+- Install package dependencies with NPM Install
+```
+npm i
+```
+- For the google maps to work you'll need your own api key (nice try) and you'll need to create a .env with the code as so
+```
+API_KEY=[your_api_key_here]
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- For your front-end api calls you'll want to go to
+```
+your_project_name/src/constants
+```
+And change the value to 
+```javascript
+export const API_URL = `https://yourServer/api/v1/`
+```
+- Unfortunately there is no seed file (yet) so you'd have to make your own models through your mongod server
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-----------------------------------------------------------------
 
-### `npm run eject`
+### Database Specifics
+There are three models:
+- User: The user has a name, a username, and they create posts. A user has a one-to-many relationship with posts.
+- Post: A post gets created by the user and belongs to a user and a restaurant. Posts share a many-to-one relationship to users and restaurants.
+- Restaurant: A restaurant can only be created through the server so far and shares a one-to-many relationship with posts
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-----------------------------------------------------------------
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Glaring Bugs
+- On first render the axios call retrives no data. Clicking on a link to the home through the logo or the profile fixes it.
+- Trying to traverse from restaurant to restaurant does not work. You have to go from restaurant to profile then to a different restaurant.
+- You can't look at different restaurants from another users profile. It'll rerender the current users profile.
+- Cannot update bio through the front-end as the put request does not work
