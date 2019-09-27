@@ -8,6 +8,7 @@ const Routes = ({ currentUser, setCurrentUser }) => {
     return (
         <Switch>
             <Route exact path="/" component={Home} />
+            <Route path="/foodenvy-frontend/" component={Home} />
             <Route path="/login"
                 render={(props) => <Home {...props} login='login' setCurrentUser={setCurrentUser} currentUser={currentUser} />} />
             <Route path="/register" component={Register} />
