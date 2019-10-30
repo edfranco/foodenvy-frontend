@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 // internal components
+import Profile from '../../components/Profile/Profile';
 import Posts from '../../components/Posts/Posts';
 import Restaurants from '../../components/Restaurants/Restaurants';
+import NewPostForm from '../../components/forms/NewPost/NewPost';
 import { API_URL } from '../../constants/constants';
 import './MyHomeContainer.css';
 
@@ -11,28 +13,25 @@ class MyHomeContainer extends Component {
         shouldDisplayNewPostForm: false,
         shouldDisplayNewPicForm: false,
         user: {},
-        buttonText: 'New Post',
         image: '',
-        description: '',
-        restaurant_name: '',
         user_id: this.props.currentUser,
-        restaurant_slug: '',
         profileImage: '',
         bio: '',
         posts: [],
-        homeGridStyleWithRestaurant: {
-            display: 'grid',
-            gridTemplateColumns: '25% 40% 45%',
-        },
-        defaultHomeGridStyle: {
-            display: 'grid',
-            gridTemplateColumns: '40% 60%',
-        }
+    };
+
+    homeGridStyleWithRestaurant = {
+        display: 'grid',
+        gridTemplateColumns: '25% 40% 45%',
+    };
+
+    defaultHomeGridStyle = {
+        display: 'grid',
+        gridTemplateColumns: '40% 60%',
     };
 
     componentDidMount() {
         if (this.state.user) {
-            console.log(true)
             this.getUserInfo(this.props.user);
             this.setPosts(this.props.user);
         } else {
@@ -144,57 +143,11 @@ class MyHomeContainer extends Component {
     render() {
         return (
             <div className="my-home"
-                style={this.props.restaurantName ? this.state.homeGridStyleWithRestaurant : this.state.defaultHomeGridStyle}>
+                style={this.props.restaurantName ? this.homeGridStyleWithRestaurant : this.defaultHomeGridStyle}>
                 <div className="profile">
-                    <div className="profile-header">
-                        <div className="image-container">
-                            <i style={{ cursor: 'pointer' }} onClick={this.handleDisplayPicForm} className="far fa-edit"></i>
-                            <img src={this.state.profileImage} alt={`${this.state.user.username}'s profile`} />
-                        </div>
-                        <div className="user-info">
-                            <strong><p>@{this.state.user.username}</p></strong>
-                            <p>{this.state.user.name}</p>
-                        </div>
-                    </div>
-
-                    {this.state.shouldDisplayNewPicForm &&
-                        <div className="new-pic">
-                            <label>New Pic Url</label>
-                            <input onChange={this.handleProfileImageChange} />
-                            <button onClick={this.handlePicChange} >Submit</button>
-                        </div>
-                    }
-                    <div >
-                        <strong>Bio:</strong>
-                        {this.state.shouldDisplayNewPicForm
-                            ? <div>
-                                <input name="bio" onChange={this.handleChange} />
-                                <button>Submit</button>
-                            </div>
-                            : <p className="bio"> {this.state.bio} </p>}
-                    </div>
-                    <button onClick={this.handleDisplayPostForm} >{this.state.buttonText}</button>
-
-                    {this.state.shouldDisplayNewPostForm &&
-                        <form className="new-post-form profile-form">
-                            <h5>New Post</h5>
-                            <label>Restaurant Name</label>
-                            <input type="text" placeholder="Where did you go?" name="restaurant_name" value={this.state.restaurant_name} onChange={this.handleChange} />
-                            <label>Description</label>
-                            <input type="text" placeholder="yummy food" name="description" value={this.state.description} onChange={this.handleChange} />
-                            <label>Image Url</label>
-                            <input name="image" value={this.state.image} onChange={this.handleChange} />
-                            <select name="restaurant_slug" onChange={this.handleChange} value={this.state.restaurant_slug}>
-                                <option>
-                                    Select Restaurant
-                                </option>
-                                <option value="valla-sf">Taqueria Vallarta</option>
-                                <option value="gordatorta">La Torta Gorda</option>
-                            </select>
-                            <button onClick={this.handleFormPost}>Post</button>
-                        </form>
-                    }
+                    <Profile user={this.state.user_id} handleDisplayPostForm={this.handleDisplayPostForm} />
                 </div>
+                {this.state.shouldDisplayNewPostForm && <NewPostForm restaurantName={this.state.restaurant_name} handleChange={this.handleChange} />}
                 <Posts posts={this.state.posts} currentUser={this.props.currentUser} deletePost={this.deletePost} />
                 {this.props.restaurantName && <Restaurants name={this.props.restaurantName} deletePost={this.deletePost} />}
             </div>

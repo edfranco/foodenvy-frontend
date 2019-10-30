@@ -1,19 +1,26 @@
+.my-home{
+    background-color: rgb(245, 245, 245);
+}
+
 .profile{
+    background-color: rgb(255, 255, 255);
     grid-column-start: 1;
     grid-column-end: 2;
     height:90vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     overflow: scroll;
-    padding:1em 1em; 
-    margin-right: 1em;
+    padding:1em 0; 
+    margin: 0;
+    min-width: 200px;
+    max-width: 300px;
 }
 
 .profile-header img{
-    height:20vh;
-    width: 15vw;
+    height:100%;
+    width: 100%;
     border-radius: 50%; 
 }
 
@@ -35,7 +42,7 @@
 }
 
 .bio{
-    background-color: whitesmoke;
+    background-color: rgb(255, 255, 255);
     height:10vh;
     width: 20vw;
     border: 1px solid black;

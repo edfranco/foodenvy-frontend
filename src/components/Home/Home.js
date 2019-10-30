@@ -34,8 +34,6 @@ class Home extends Component {
         this.registerUser();
     }
 
-
-
     render() {
         return (
             <div className="home">
