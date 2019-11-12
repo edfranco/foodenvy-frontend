@@ -4,8 +4,8 @@ import axios from 'axios';
 
 class Login extends Component {
     state = {
-        email: '',
-        password: ''
+        email: 'test@test.com',
+        password: '12345'
     };
 
     handleChange = (event) => {

@@ -26,7 +26,6 @@ class Profile extends Component {
     getUserInfo = (user) => {
         axios.get(`${API_URL}users/${user}`)
             .then(response => {
-                console.log(response);
                 this.setState({
                     user: response.data.data,
                     bio: response.data.data.bio,

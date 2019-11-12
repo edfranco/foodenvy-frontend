@@ -1,0 +1,9 @@
+.register{
+    display: flex;
+    flex-direction: column;
+}
+
+.register p{
+    margin: 0 3em;
+    line-height: 1.5em;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Switch, Route } from 'react-router-dom';
 import Home from '../components/Home/Home';
-import Register from '../components/Auth/Register';
+import Register from '../components/Auth/Register/Register';
 import MyHomeContainer from '../containers/MyHomeContainer/MyHomeContainer';
 
 const Routes = ({ currentUser, setCurrentUser }) => {

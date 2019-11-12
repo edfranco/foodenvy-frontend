@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 // internal components
-import Register from '../Auth/Register';
+import Register from '../Auth/Register/Register';
 import Login from '../Auth/Login';
 import { API_URL } from '../../constants/constants';
 import './Home.css';

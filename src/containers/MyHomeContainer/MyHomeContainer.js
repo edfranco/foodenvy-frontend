@@ -8,6 +8,7 @@ import NewPostForm from '../../components/forms/NewPost/NewPost';
 import { API_URL } from '../../constants/constants';
 import './MyHomeContainer.css';
 
+
 class MyHomeContainer extends Component {
     state = {
         shouldDisplayNewPostForm: false,
@@ -66,7 +67,6 @@ class MyHomeContainer extends Component {
     getUserInfo = (user) => {
         axios.get(`${API_URL}users/${user}`)
             .then(response => {
-                console.log(response)
                 this.setState({
                     user: response.data.data,
                     bio: response.data.data.bio,
