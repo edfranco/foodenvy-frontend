@@ -15,15 +15,12 @@ class Profile extends Component {
     };
 
     componentDidMount() {
-        this.setState({ buttonText: 'New Post' });
-        if (this.state.user) {
-            this.getUserInfo(this.props.user);
-        } else {
-            this.getUserInfo(this.props.currentUser);
-        };
+        this.setState({ buttonText: 'New Post', user: this.props.user });
+        this.getUserInfo(this.state.user_id);
     };
 
     getUserInfo = (user) => {
+        console.log('getting', user)
         axios.get(`${API_URL}users/${user}`)
             .then(response => {
                 this.setState({
@@ -61,6 +58,7 @@ class Profile extends Component {
     };
 
     render() {
+        console.log(this.props.user._id)
         return (
             <div className="profile">
                 <div className="profile-header">

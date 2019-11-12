@@ -18,7 +18,7 @@ const Post = ({ deletePost, restaurantName, image, time, description, slug, id, 
                 }
                 <p style={{ cursor: 'pointer' }} onClick={() => deletePost(id)}>x</p>
             </div>
-            <div className="image-container">
+            <div className="post-image-container">
                 <img src={image} alt="post" />
             </div>
 

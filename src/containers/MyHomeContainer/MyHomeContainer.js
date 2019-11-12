@@ -32,12 +32,10 @@ class MyHomeContainer extends Component {
     };
 
     componentDidMount() {
-        if (this.state.user) {
-            this.getUserInfo(this.props.user);
-            this.setPosts(this.props.user);
+        if (this.props.path === "/profile/:user") {
+            this.setState({ user_id: this.props.match.params.user });
         } else {
             this.getUserInfo(this.props.currentUser);
-            this.setPosts(this.props.currentUser);
         };
     };
 
@@ -73,14 +71,11 @@ class MyHomeContainer extends Component {
                     posts: response.data.data.posts,
                     profileImage: response.data.data.profile_image
                 });
-            })
-            .catch(error => console.log(error));
+            });
     };
 
     changeBio = () => {
         axios.put(`${API_URL}users/${this.state.user._id}`, { bio: this.state.bio })
-            .then(response => console.log(response.data.data.bio))
-            .catch(error => console.log(error));
     };
 
     submitPost = () => {
@@ -122,7 +117,7 @@ class MyHomeContainer extends Component {
         return (
             <div className="my-home"
                 style={this.props.restaurantName ? this.homeGridStyleWithRestaurant : this.defaultHomeGridStyle}>
-                <Profile user={this.state.user_id} handleDisplayPostForm={this.handleDisplayPostForm} />
+                <Profile currentUser={this.props.currentUser} user={this.state.user} handleDisplayPostForm={this.handleDisplayPostForm} path={this.props.match.path} />
                 {this.state.shouldDisplayNewPostForm && <NewPostForm restaurantName={this.state.restaurant_name} handleChange={this.handleChange} />}
                 <Posts posts={this.state.posts} currentUser={this.props.currentUser} deletePost={this.deletePost} />
                 {this.props.restaurantName && <Restaurants name={this.props.restaurantName} deletePost={this.deletePost} />}
