@@ -26,3 +26,7 @@ nav{
     list-style: none;
     padding-right:1em; 
 }
+
+.nav-links li:hover{
+    color: var(--hover-button-color);
+}

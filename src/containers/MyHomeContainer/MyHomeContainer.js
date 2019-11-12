@@ -77,12 +77,6 @@ class MyHomeContainer extends Component {
             .catch(error => console.log(error));
     };
 
-    changeProfilePic = () => {
-        axios.put(`${API_URL}users/${this.state.user._id}`, { profile_image: this.state.profileImage })
-            .then(response => console.log(response.data.data.profile_image))
-            .catch(error => console.log(error));
-    };
-
     changeBio = () => {
         axios.put(`${API_URL}users/${this.state.user._id}`, { bio: this.state.bio })
             .then(response => console.log(response.data.data.bio))
@@ -110,31 +104,15 @@ class MyHomeContainer extends Component {
             .catch();
     };
 
-    handleProfileImageChange = (event) => {
-        this.setState({ profileImage: event.target.value });
-    };
-
     handleDisplayPostForm = () => {
         this.setState({ shouldDisplayNewPostForm: !this.state.shouldDisplayNewPostForm });
     };
-    handleDisplayPicForm = () => {
-        this.setState({ shouldDisplayNewPicForm: !this.state.shouldDisplayNewPicForm });
-    };
+
 
     handleFormPost = (event) => {
         event.preventDefault();
         this.submitPost();
     };
-
-    handlePicChange = (event) => {
-        event.preventDefault();
-        this.changeProfilePic();
-    };
-
-    handleBioChange = (event) => {
-        event.preventDefault();
-        this.changeBio();
-    }
 
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
@@ -144,9 +122,7 @@ class MyHomeContainer extends Component {
         return (
             <div className="my-home"
                 style={this.props.restaurantName ? this.homeGridStyleWithRestaurant : this.defaultHomeGridStyle}>
-                <div className="profile">
-                    <Profile user={this.state.user_id} handleDisplayPostForm={this.handleDisplayPostForm} />
-                </div>
+                <Profile user={this.state.user_id} handleDisplayPostForm={this.handleDisplayPostForm} />
                 {this.state.shouldDisplayNewPostForm && <NewPostForm restaurantName={this.state.restaurant_name} handleChange={this.handleChange} />}
                 <Posts posts={this.state.posts} currentUser={this.props.currentUser} deletePost={this.deletePost} />
                 {this.props.restaurantName && <Restaurants name={this.props.restaurantName} deletePost={this.deletePost} />}

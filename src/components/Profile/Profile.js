@@ -36,9 +36,33 @@ class Profile extends Component {
             .catch(error => console.log(error));
     };
 
+    changeProfilePic = () => {
+        axios.put(`${API_URL}users/${this.state.user._id}`, { profile_image: this.state.profileImage })
+            .then(response => console.log(response.data.data.profile_image))
+            .catch(error => console.log(error));
+    };
+
+    handleDisplayPicForm = () => {
+        this.setState({ shouldDisplayNewPicForm: !this.state.shouldDisplayNewPicForm });
+    };
+
+    handlePicChange = (event) => {
+        event.preventDefault();
+        this.changeProfilePic();
+    };
+
+    handleBioChange = (event) => {
+        event.preventDefault();
+        this.changeBio();
+    }
+
+    handleProfileImageChange = (event) => {
+        this.setState({ profileImage: event.target.value });
+    };
+
     render() {
         return (
-            <>
+            <div className="profile">
                 <div className="profile-header">
                     <div className="image-container">
                         <i style={{ cursor: 'pointer' }} onClick={this.handleDisplayPicForm} className="far fa-edit"></i>
@@ -56,21 +80,22 @@ class Profile extends Component {
                         <button onClick={this.handlePicChange} >Submit</button>
                     </div>
                 }
-                <div className="bio">
+                <div className="bio-container">
                     <strong>Bio:</strong>
                     {this.state.shouldDisplayNewPicForm
-                        ? <div>
+                        ? <div className="new-pic">
                             <input name="bio" onChange={this.handleChange} />
                             <button>Submit</button>
                         </div>
-                        : <p className="bio"> {this.state.bio} </p>}
+                        : <p className="bio">{this.state.bio}</p>}
+                    <button onClick={() => {
+                        this.props.handleDisplayPostForm();
+                        this.setState({ buttonText: this.state.buttonText === 'Cancel' ? 'New Post' : 'Cancel' });
+                    }}
+                    >{this.state.buttonText}</button>
                 </div>
-                <button onClick={() => {
-                    this.props.handleDisplayPostForm();
-                    this.setState({ buttonText: this.state.buttonText == 'Cancel' ? 'New Post' : 'Cancel' });
-                }}
-                >{this.state.buttonText}</button>
-            </>
+
+            </div>
         );
     };
 };
