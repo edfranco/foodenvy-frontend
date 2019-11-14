@@ -11,7 +11,7 @@ const Routes = ({ currentUser, setCurrentUser }) => {
             <Route path="/foodenvy-frontend/" component={Home} />
             <Route path="/login"
                 render={(props) => <Home {...props} login='login' setCurrentUser={setCurrentUser} currentUser={currentUser} />} />
-            <Route path="/register" component={Register} />
+            <Route path="/register" render={(props) => <Home {...props} register='register' setCurrentUser={setCurrentUser} currentUser={currentUser} />} />
             <Route path="/my_home"
                 render={(props) => <MyHomeContainer {...props} currentUser={currentUser} />} />
             <Route path="/restaurant/:restaurant_name"

@@ -41,9 +41,9 @@ class Home extends Component {
                     <img src="https://static8.depositphotos.com/1273864/887/i/950/depositphotos_8878936-stock-photo-greek-salad-gourmet-food-white.jpg" alt="fruit salad" />
                 </div>
 
-                {this.props.login
-                    ? <Login history={this.props.history} currentUser={this.props.currentUser} setCurrentUser={this.props.setCurrentUser} />
-                    : <Register handleSubmit={this.handleSubmit} handleChange={this.handleChange} formInfo={this.state} />
+                {this.props.register
+                    ? <Register handleSubmit={this.handleSubmit} handleChange={this.handleChange} formInfo={this.state} />
+                    : <Login history={this.props.history} currentUser={this.props.currentUser} setCurrentUser={this.props.setCurrentUser} />
                 }
             </div>
         );
