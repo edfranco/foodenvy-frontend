@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "da93e9d0aef90fd4f4d41d82440e5ee2",
+    "revision": "04ebf6463eba38e5d129a2fcc316c3a4",
     "url": "/foodenvy-frontend/index.html"
   },
   {
-    "revision": "3cf1db636c19ef4558d1",
+    "revision": "4d5fb51c26e7e2956021",
     "url": "/foodenvy-frontend/static/css/main.28aede8a.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/foodenvy-frontend/static/js/2.84df0eab.chunk.js"
   },
   {
-    "revision": "3cf1db636c19ef4558d1",
-    "url": "/foodenvy-frontend/static/js/main.3f2c595c.chunk.js"
+    "revision": "4d5fb51c26e7e2956021",
+    "url": "/foodenvy-frontend/static/js/main.afa016e9.chunk.js"
   },
   {
     "revision": "c991445c2ffc3fcee025",
