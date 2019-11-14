@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/foodenvy-frontend/static/css/main.28aede8a.chunk.css",
-    "main.js": "/foodenvy-frontend/static/js/main.afa016e9.chunk.js",
-    "main.js.map": "/foodenvy-frontend/static/js/main.afa016e9.chunk.js.map",
+    "main.js": "/foodenvy-frontend/static/js/main.ad4fbbb5.chunk.js",
+    "main.js.map": "/foodenvy-frontend/static/js/main.ad4fbbb5.chunk.js.map",
     "runtime~main.js": "/foodenvy-frontend/static/js/runtime~main.49d9aba2.js",
     "runtime~main.js.map": "/foodenvy-frontend/static/js/runtime~main.49d9aba2.js.map",
     "static/js/2.84df0eab.chunk.js": "/foodenvy-frontend/static/js/2.84df0eab.chunk.js",
     "static/js/2.84df0eab.chunk.js.map": "/foodenvy-frontend/static/js/2.84df0eab.chunk.js.map",
     "index.html": "/foodenvy-frontend/index.html",
-    "precache-manifest.6d16e949ce5eb92f5baaea180da3f3a1.js": "/foodenvy-frontend/precache-manifest.6d16e949ce5eb92f5baaea180da3f3a1.js",
+    "precache-manifest.96157834fcb9231f49f98dd39149a328.js": "/foodenvy-frontend/precache-manifest.96157834fcb9231f49f98dd39149a328.js",
     "service-worker.js": "/foodenvy-frontend/service-worker.js",
     "static/css/main.28aede8a.chunk.css.map": "/foodenvy-frontend/static/css/main.28aede8a.chunk.css.map"
   }
