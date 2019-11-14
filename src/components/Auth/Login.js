@@ -15,7 +15,7 @@ class Login extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const userInfo = this.state;
-        axios.post(`${API_URL}auth/login`, userInfo, { withCredentials: true })
+        axios.post(`${API_URL}auth/login`, userInfo, { withCredentials: false })
             .then(response => {
                 this.props.setCurrentUser(response.data.id);
                 this.props.history.push('/my_home');
