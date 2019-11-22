@@ -17,11 +17,12 @@ class Login extends Component {
         const userInfo = this.state;
         axios.post(`${API_URL}auth/login`, userInfo, { withCredentials: false })
             .then(response => {
+                console.log(response)
                 this.props.setCurrentUser(response.data.id);
                 this.props.history.push('/my_home');
             })
             .catch(error => {
-                console.log(error.response);
+                console.log(error);
             });
     };
 
