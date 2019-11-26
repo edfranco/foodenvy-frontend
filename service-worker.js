@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/foodenvy-frontend/precache-manifest.96157834fcb9231f49f98dd39149a328.js"
+  "/foodenvy-frontend/precache-manifest.e79d24462e299dc925ead43a605414e0.js"
 );
 
 self.addEventListener('message', (event) => {
